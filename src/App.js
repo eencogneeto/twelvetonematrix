@@ -6,76 +6,157 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const columns = [{
-  Header: '',
-  accessor: 'item_0'
-}, {
-  Header: '',
-  accessor: 'item_1'
-}, {
-  Header: '',
-  accessor: 'item_2'
-}, {
-  Header: '',
-  accessor: 'item_3'
-}, {
-  Header: '',
-  accessor: 'item_4'
-}, {
-  Header: '',
-  accessor: 'item_5'
-}, {
-  Header: '',
-  accessor: 'item_6'
-}, {
-  Header: '',
-  accessor: 'item_7'
-}, {
-  Header: '',
-  accessor: 'item_8'
-}, {
-  Header: '',
-  accessor: 'item_9'
-}, {
-  Header: '',
-  accessor: 'item_10'
-}, {
-  Header: '',
-  accessor: 'item_11'
+  Header: 'Number Matrix',
+  width: 480,
+  columns: [{
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_0',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_1',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_2',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_3',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_4',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_5',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_6',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_7',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_8',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_9',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_10',
+    width: 40
+  }, {
+    Header: '',
+    style: { textAlign: "center" },
+    accessor: 'item_11',
+    width: 40
+  }],
 }]
+// columns = [{
+//   Header: '',
+//   accessor: 'item_0',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_1',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_2',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_3',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_4',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_5',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_6',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_7',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_8',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_9',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_10',
+//   width: 40
+// }, {
+//   Header: '',
+//   accessor: 'item_11',
+//   width: 40
+// }]
+
+// const init = [
+//   { id: 'item-0', num: 0, content: 'A'},
+//   { id: 'item-1', num: 1, content: 'A#/Bb'},
+//   { id: 'item-2', num: 2, content: 'B'},
+//   { id: 'item-3', num: 3, content: 'C'},
+//   { id: 'item-4', num: 4, content: 'C#/Db'},
+//   { id: 'item-5', num: 5, content: 'D'},
+//   { id: 'item-6', num: 6, content: 'D#/Eb'},
+//   { id: 'item-7', num: 7, content: 'E'},
+//   { id: 'item-8', num: 8, content: 'F'},
+//   { id: 'item-9', num: 9, content: 'F#/Gb'},
+//   { id: 'item-10', num: 10, content: 'G'},
+//   { id: 'item-11', num: 11, content: 'G#/Ab'}
+// ]
 
 const init = [
   { id: 'item-0', num: 0, content: 'A'},
-  { id: 'item-1', num: 1, content: 'A#/Bb'},
+  { id: 'item-1', num: 1, content: 'A#'},
   { id: 'item-2', num: 2, content: 'B'},
   { id: 'item-3', num: 3, content: 'C'},
-  { id: 'item-4', num: 4, content: 'C#/Db'},
+  { id: 'item-4', num: 4, content: 'C#'},
   { id: 'item-5', num: 5, content: 'D'},
-  { id: 'item-6', num: 6, content: 'D#/Eb'},
+  { id: 'item-6', num: 6, content: 'D#'},
   { id: 'item-7', num: 7, content: 'E'},
   { id: 'item-8', num: 8, content: 'F'},
-  { id: 'item-9', num: 9, content: 'F#/Gb'},
-  { id: 'item-10', num: 10, content: 'G'}, 
-  { id: 'item-11', num: 11, content: 'G#/Ab'}
+  { id: 'item-9', num: 9, content: 'F#'},
+  { id: 'item-10', num: 10, content: 'G'},
+  { id: 'item-11', num: 11, content: 'G#'}
 ]
-
-// const init = [
-//   { id: 'item-0', content: 'A'},
-//   { id: 'item-1', content: 'A#/Bb'},
-//   { id: 'item-2', content: 'B'},
-//   { id: 'item-3', content: 'C'},
-//   { id: 'item-4', content: 'C#/Db'},
-//   { id: 'item-5', content: 'D'},
-//   { id: 'item-6', content: 'D#/Eb'},
-//   { id: 'item-7', content: 'E'},
-//   { id: 'item-8', content: 'F'},
-//   { id: 'item-9', content: 'F#/Gb'},
-//   { id: 'item-10', content: 'G'}, 
-//   { id: 'item-11', content: 'G#/Ab'}
-// ]
 
 
 // a little function to help us with reordering the result
@@ -87,13 +168,14 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 8;
+const grid = 6;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: 'none',
-  padding: grid * 4,
-  margin: `0 ${grid}px 0 0`,
+  padding: `20px 44px 20px 44px`,
+  margin: `0 ${grid/2}px 0 ${grid/2}px`,
+  width: '100px',
 
   // change background colour if dragging
   background: isDragging ? 'lightgreen' : 'white',
@@ -110,7 +192,7 @@ const getListStyle = isDraggingOver => ({
 });
 
 class App extends React.Component {
- 
+
   constructor(props) {
     super(props);
     this.state = {
@@ -118,6 +200,12 @@ class App extends React.Component {
       items: init,
       matrix_num: [],
       inversion: [],
+
+      aSharp: true,
+      cSharp: true,
+      dSharp: true,
+      fSharp: true,
+      gSharp: true,
     };
     this.onDragEnd = this.onDragEnd.bind(this);
   }
@@ -143,6 +231,80 @@ class App extends React.Component {
     });
   }
 
+  // A bunch of methods to change the sharps to their flats
+  clickaSharp() {
+    var sharp = this.state.aSharp;
+    if (sharp) {
+      var oldvalue = 'A#';
+      var newvalue = 'Bb';
+    } else {
+      oldvalue = 'Bb';
+      newvalue = 'A#'
+    }
+    this.setState({ aSharp: !sharp });
+    this.replaceByValue('content', oldvalue, newvalue );
+  }
+  clickcSharp() {
+    var sharp = this.state.cSharp;
+    if (sharp) {
+      var oldvalue = 'C#';
+      var newvalue = 'Db';
+    } else {
+      oldvalue = 'Db';
+      newvalue = 'C#'
+    }
+    this.setState({ cSharp: !sharp });
+    this.replaceByValue('content', oldvalue, newvalue );
+  }
+  clickdSharp() {
+    var sharp = this.state.dSharp;
+    if (sharp) {
+      var oldvalue = 'D#';
+      var newvalue = 'Eb';
+    } else {
+      oldvalue = 'Eb';
+      newvalue = 'D#'
+    }
+    this.setState({ dSharp: !sharp });
+    this.replaceByValue('content', oldvalue, newvalue );
+  }
+  clickfSharp() {
+    var sharp = this.state.fSharp;
+    if (sharp) {
+      var oldvalue = 'F#';
+      var newvalue = 'Gb';
+    } else {
+      oldvalue = 'Gb';
+      newvalue = 'F#'
+    }
+    this.setState({ fSharp: !sharp });
+    this.replaceByValue('content', oldvalue, newvalue );
+  }
+  clickgSharp() {
+    var sharp = this.state.gSharp;
+    if (sharp) {
+      var oldvalue = 'G#';
+      var newvalue = 'Ab';
+    } else {
+      oldvalue = 'Ab';
+      newvalue = 'G#'
+    }
+    this.setState({ gSharp: !sharp });
+    this.replaceByValue('content', oldvalue, newvalue );
+  }
+
+  // A function to replace a specific key's value
+  replaceByValue( field, oldvalue, newvalue ) {
+    var temp = JSON.parse(JSON.stringify(this.state.items));
+    for( var k = 0; k < temp.length; ++k ) {
+        if( oldvalue == temp[k][field] ) {
+            temp[k][field] = newvalue ;
+        }
+    }
+    this.setState({ items: temp });
+  }
+
+  // generates the matrix in number form
   generateMatrix() {
     const snapshot = this.state.items;
     // Set first note to 0
@@ -225,6 +387,59 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Container>
+          <Row>
+            <Col></Col>
+            <Col>
+              <Button
+                variant={this.state.aSharp ? "primary" : "success"}
+                size="lg"
+                onClick={()=> this.clickaSharp()}
+              >
+                {this.state.aSharp ? 'A#' : 'Bb'}
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                variant={this.state.cSharp ? "primary" : "success"}
+                size="lg"
+                onClick={()=> this.clickcSharp()}
+              >
+                {this.state.cSharp ? 'C#' : 'Db'}
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                variant={this.state.dSharp ? "primary" : "success"}
+                size="lg"
+                onClick={()=> this.clickdSharp()}
+              >
+                {this.state.dSharp ? 'D#' : 'Eb'}
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                variant={this.state.fSharp ? "primary" : "success"}
+                size="lg"
+                onClick={()=> this.clickfSharp()}
+              >
+                {this.state.fSharp ? 'F#' : 'Gb'}
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                variant={this.state.gSharp ? "primary" : "success"}
+                size="lg"
+                onClick={()=> this.clickgSharp()}
+              >
+                {this.state.gSharp ? 'G#' : 'Ab'}
+              </Button>
+            </Col>
+            <Col></Col>
+
+          </Row>
+        </Container>
+
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable" direction="horizontal">
             {(provided, snapshot) => (
@@ -255,18 +470,74 @@ class App extends React.Component {
             )}
           </Droppable>
         </DragDropContext>
-        <Button
-          variant="primary"
-          size="lg"
-          block
-          onClick={()=> this.generateMatrix()}
-        >Generate Matrix</Button>
-        <ReactTable
-          data={this.state.matrix_num}
-          columns={columns}
-          minRows={12}
-          showPagination={false}
-        />
+        <Container>
+          {/* <Row>
+            <Col xs={12}>
+              <DragDropContext onDragEnd={this.onDragEnd}>
+                <Droppable droppableId="droppable" direction="horizontal">
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      style={getListStyle(snapshot.isDraggingOver)}
+                      {...provided.droppableProps}
+                    >
+                      {this.state.items.map((item, index) => (
+                        <Draggable key={item.id} draggableId={item.id} index={index}>
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={getItemStyle(
+                                snapshot.isDragging,
+                                provided.draggableProps.style
+                              )}
+                            >
+                              {item.content}
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
+            </Col>
+          </Row> */}
+          <Row>
+            <Col xs={12} md={2}></Col>
+            <Col xs={12} md={8}>
+              <Button
+                variant="primary"
+                size="lg"
+                block
+                onClick={()=> this.generateMatrix()}
+              >
+                Generate Matrix
+              </Button>
+            </Col>
+            <Col xs={12} md={2}></Col>
+          </Row>
+          <Row>
+            <ReactTable
+              data={this.state.matrix_num}
+              columns={columns}
+              minRows={12}
+              showPagination={false}
+            />
+            <Col xs="auto">
+              <ReactTable
+                data={this.state.matrix_num}
+                columns={columns}
+                minRows={12}
+                showPagination={false}
+                resizable={true}
+              />
+            </Col>
+          </Row>
+        </Container>
+
       </React.Fragment>
     );
   }
