@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
@@ -159,7 +159,7 @@ const init = [
 ]
 
 
-// a little function to help us with reordering the result
+// RBDND a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -214,6 +214,7 @@ class App extends React.Component {
     this.generateMatrix();
   }
 
+  // RBDND
   onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
@@ -297,7 +298,7 @@ class App extends React.Component {
   replaceByValue( field, oldvalue, newvalue ) {
     var temp = JSON.parse(JSON.stringify(this.state.items));
     for( var k = 0; k < temp.length; ++k ) {
-        if( oldvalue == temp[k][field] ) {
+        if( oldvalue === temp[k][field] ) {
             temp[k][field] = newvalue ;
         }
     }
@@ -328,7 +329,7 @@ class App extends React.Component {
           result = 6 - pivot;
         }
         else {
-          var pivot = 6 - element.num;
+          pivot = 6 - element.num;
           result = 6 + pivot;
         }
       }
@@ -379,11 +380,11 @@ class App extends React.Component {
       row.item_11 = row.item_11 > 11 ? row.item_11 - 12 : row.item_11;
       matrix.push(row);
     });
+    // i dont actually need to keep the inversion
     this.setState({ inversion: inverse, matrix_num: matrix });
   }
 
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
+  // render components
   render() {
     return (
       <React.Fragment>
