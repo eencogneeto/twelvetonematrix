@@ -177,6 +177,7 @@ class App extends React.Component {
       matrix_num: [],
       matrix_note: [],
       inversion: [],
+      number_to_note: ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'],
 
       aSharp: true,
       cSharp: true,
@@ -221,6 +222,7 @@ class App extends React.Component {
     }
     this.setState({ aSharp: !sharp });
     this.replaceByValue('content', oldvalue, newvalue );
+    this.replaceNote(oldvalue, newvalue);
   }
   clickcSharp() {
     var sharp = this.state.cSharp;
@@ -233,6 +235,7 @@ class App extends React.Component {
     }
     this.setState({ cSharp: !sharp });
     this.replaceByValue('content', oldvalue, newvalue );
+    this.replaceNote(oldvalue, newvalue);
   }
   clickdSharp() {
     var sharp = this.state.dSharp;
@@ -245,6 +248,7 @@ class App extends React.Component {
     }
     this.setState({ dSharp: !sharp });
     this.replaceByValue('content', oldvalue, newvalue );
+    this.replaceNote(oldvalue, newvalue);
   }
   clickfSharp() {
     var sharp = this.state.fSharp;
@@ -257,6 +261,7 @@ class App extends React.Component {
     }
     this.setState({ fSharp: !sharp });
     this.replaceByValue('content', oldvalue, newvalue );
+    this.replaceNote(oldvalue, newvalue);
   }
   clickgSharp() {
     var sharp = this.state.gSharp;
@@ -265,21 +270,33 @@ class App extends React.Component {
       var newvalue = 'Ab';
     } else {
       oldvalue = 'Ab';
-      newvalue = 'G#'
+      newvalue = 'G#';
     }
     this.setState({ gSharp: !sharp });
-    this.replaceByValue('content', oldvalue, newvalue );
+    this.replaceByValue('content', oldvalue, newvalue);
+    this.replaceNote(oldvalue, newvalue);
   }
 
   // A function to replace a specific key's value
   replaceByValue( field, oldvalue, newvalue ) {
     var temp = JSON.parse(JSON.stringify(this.state.items));
     for( var k = 0; k < temp.length; ++k ) {
-        if( oldvalue === temp[k][field] ) {
-            temp[k][field] = newvalue ;
+       if( oldvalue === temp[k][field] ) {
+          temp[k][field] = newvalue;
         }
     }
     this.setState({ items: temp });
+  }
+  
+  // A function to replace note
+  replaceNote(oldvalue, newvalue) {
+    var temp = this.state.number_to_note;
+    for( var k = 0; k < temp.length; ++k ) {
+      if( oldvalue === temp[k] ) {
+        temp[k] = newvalue ;
+      }
+    }
+    this.setState({ number_to_note: temp });
   }
 
   // generates the matrix in number form
@@ -328,7 +345,7 @@ class App extends React.Component {
       item_11: snapshot[11].num
     };
     // dictionary of note to number
-    var number_to_note = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'];
+    var number_to_note = this.state.number_to_note;
     // rearrange according to tone row 0
     var splice_number = snapshot[0].num;
     number_to_note = number_to_note.concat(number_to_note.splice(0,splice_number));
