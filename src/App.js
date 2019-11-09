@@ -13,135 +13,113 @@ import Col from 'react-bootstrap/Col'
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const columns = [{
-  Header: 'Number Matrix',
+const columns_note = [{
+  Header: 'Note Matrix',
   width: 480,
   columns: [{
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_0',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_1',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_2',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_3',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_4',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_5',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_6',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_7',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_8',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_9',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_10',
     width: 40
   }, {
-    Header: '',
     style: { textAlign: "center" },
     accessor: 'item_11',
     width: 40
   }],
 }]
-// columns = [{
-//   Header: '',
-//   accessor: 'item_0',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_1',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_2',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_3',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_4',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_5',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_6',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_7',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_8',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_9',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_10',
-//   width: 40
-// }, {
-//   Header: '',
-//   accessor: 'item_11',
-//   width: 40
-// }]
 
-// const init = [
-//   { id: 'item-0', num: 0, content: 'A'},
-//   { id: 'item-1', num: 1, content: 'A#/Bb'},
-//   { id: 'item-2', num: 2, content: 'B'},
-//   { id: 'item-3', num: 3, content: 'C'},
-//   { id: 'item-4', num: 4, content: 'C#/Db'},
-//   { id: 'item-5', num: 5, content: 'D'},
-//   { id: 'item-6', num: 6, content: 'D#/Eb'},
-//   { id: 'item-7', num: 7, content: 'E'},
-//   { id: 'item-8', num: 8, content: 'F'},
-//   { id: 'item-9', num: 9, content: 'F#/Gb'},
-//   { id: 'item-10', num: 10, content: 'G'},
-//   { id: 'item-11', num: 11, content: 'G#/Ab'}
-// ]
+const columns_num = [{
+  Header: 'Number Matrix',
+  width: 480,
+  columns: [{
+    style: { textAlign: "center" },
+    accessor: 'item_0',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_1',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_2',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_3',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_4',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_5',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_6',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_7',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_8',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_9',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_10',
+    width: 40
+  }, {
+    style: { textAlign: "center" },
+    accessor: 'item_11',
+    width: 40
+  }],
+}]
 
 const init = [
   { id: 'item-0', num: 0, content: 'A'},
@@ -157,7 +135,6 @@ const init = [
   { id: 'item-10', num: 10, content: 'G'},
   { id: 'item-11', num: 11, content: 'G#'}
 ]
-
 
 // RBDND a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -192,13 +169,13 @@ const getListStyle = isDraggingOver => ({
 });
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       // items: getItems(8),
       items: init,
       matrix_num: [],
+      matrix_note: [],
       inversion: [],
 
       aSharp: true,
@@ -350,9 +327,18 @@ class App extends React.Component {
       item_10: snapshot[10].num,
       item_11: snapshot[11].num
     };
-    var matrix = [];
+    // dictionary of note to number
+    var number_to_note = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'];
+    // rearrange according to tone row 0
+    var splice_number = snapshot[0].num;
+    number_to_note = number_to_note.concat(number_to_note.splice(0,splice_number));
+    // number matrix and note matrix for output
+    var matrix_num = [];
+    var matrix_note = [];
+    // go through inverse and generate rows
     inverse.forEach(element => {
       var row = JSON.parse(JSON.stringify(row0));
+      
       row.item_0 = row.item_0 + element;
       row.item_1 = row.item_1 + element;
       row.item_2 = row.item_2 + element;
@@ -378,10 +364,30 @@ class App extends React.Component {
       row.item_9 = row.item_9 > 11 ? row.item_9 - 12 : row.item_9;
       row.item_10 = row.item_10 > 11 ? row.item_10 - 12 : row.item_10;
       row.item_11 = row.item_11 > 11 ? row.item_11 - 12 : row.item_11;
-      matrix.push(row);
+      matrix_num.push(row);
+
+      var roww = JSON.parse(JSON.stringify(row));
+
+      roww.item_0 = number_to_note[roww.item_0];
+      roww.item_1 = number_to_note[roww.item_1];
+      roww.item_2 = number_to_note[roww.item_2];
+      roww.item_3 = number_to_note[roww.item_3];
+      roww.item_4 = number_to_note[roww.item_4];
+      roww.item_5 = number_to_note[roww.item_5];
+      roww.item_6 = number_to_note[roww.item_6];
+      roww.item_7 = number_to_note[roww.item_7];
+      roww.item_8 = number_to_note[roww.item_8];
+      roww.item_9 = number_to_note[roww.item_9];
+      roww.item_10 = number_to_note[roww.item_10];
+      roww.item_11 = number_to_note[roww.item_11];
+      matrix_note.push(roww);
     });
     // i dont actually need to keep the inversion
-    this.setState({ inversion: inverse, matrix_num: matrix });
+    // this.setState({ inversion: inverse, matrix_num: matrix_num, matrix_note: matrix_note, });
+    this.setState({ 
+      matrix_num: matrix_num, 
+      matrix_note: matrix_note, 
+    });
   }
 
   // render components
@@ -522,15 +528,15 @@ class App extends React.Component {
           </Row>
           <Row>
             <ReactTable
-              data={this.state.matrix_num}
-              columns={columns}
+              data={this.state.matrix_note}
+              columns={columns_note}
               minRows={12}
               showPagination={false}
             />
             <Col xs="auto">
               <ReactTable
                 data={this.state.matrix_num}
-                columns={columns}
+                columns={columns_num}
                 minRows={12}
                 showPagination={false}
                 resizable={true}
