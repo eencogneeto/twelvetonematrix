@@ -512,7 +512,7 @@ class App extends React.Component {
             <Grid item xs={12} spacing={3}>
               <ReactTable
                 data={this.state.matrix_note}
-                columns={columns_num}
+                columns={columns_note}
                 minRows={12}
                 showPagination={false}
                 resizable={true}
