@@ -6,12 +6,16 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import MuiButton from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
-import { Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+const Button = withStyles({
+  label: {
+    textTransform: 'none',
+  },
+})(MuiButton);
 
 const columns_note = [{
   Header: 'Note Matrix',
@@ -287,7 +291,7 @@ class App extends React.Component {
     }
     this.setState({ items: temp });
   }
-  
+
   // A function to replace note
   replaceNote(oldvalue, newvalue) {
     var temp = this.state.number_to_note;
@@ -411,92 +415,57 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Container>
-          <Row>
-            <Col></Col>
-            <Col>
+        <Container maxWidth={1800}>
+          <Grid
+            container
+            direction="column"
+            justify="space-evenly"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item xs={12} spacing={3}>
               <Button
-                variant={this.state.aSharp ? "primary" : "success"}
-                size="lg"
+                variant="contained"
+                color={this.state.aSharp ? "primary" : "secondary"}
+                
                 onClick={()=> this.clickaSharp()}
               >
                 {this.state.aSharp ? 'A#' : 'Bb'}
               </Button>
-            </Col>
-            <Col>
               <Button
-                variant={this.state.cSharp ? "primary" : "success"}
-                size="lg"
+                variant="contained"
+                color={this.state.cSharp ? "primary" : "secondary"}
+                
                 onClick={()=> this.clickcSharp()}
               >
                 {this.state.cSharp ? 'C#' : 'Db'}
               </Button>
-            </Col>
-            <Col>
               <Button
-                variant={this.state.dSharp ? "primary" : "success"}
-                size="lg"
+                variant="contained"
+                color={this.state.dSharp ? "primary" : "secondary"}
+                
                 onClick={()=> this.clickdSharp()}
               >
                 {this.state.dSharp ? 'D#' : 'Eb'}
               </Button>
-            </Col>
-            <Col>
               <Button
-                variant={this.state.fSharp ? "primary" : "success"}
-                size="lg"
+                variant="contained"
+                color={this.state.fSharp ? "primary" : "secondary"}
+                
                 onClick={()=> this.clickfSharp()}
               >
                 {this.state.fSharp ? 'F#' : 'Gb'}
               </Button>
-            </Col>
-            <Col>
               <Button
-                variant={this.state.gSharp ? "primary" : "success"}
-                size="lg"
+                variant="contained"
+                color={this.state.gSharp ? "primary" : "secondary"}
+                
                 onClick={()=> this.clickgSharp()}
               >
                 {this.state.gSharp ? 'G#' : 'Ab'}
               </Button>
-            </Col>
-            <Col></Col>
-
-          </Row>
-        </Container>
-
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          <Droppable droppableId="droppable" direction="horizontal">
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
-                {...provided.droppableProps}
-              >
-                {this.state.items.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style
-                        )}
-                      >
-                        {item.content}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-        <Container>
-          {/* <Row>
-            <Col xs={12}>
+            </Grid>
+            <Grid item xs={12} spacing={3}>
               <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable droppableId="droppable" direction="horizontal">
                   {(provided, snapshot) => (
@@ -527,30 +496,27 @@ class App extends React.Component {
                   )}
                 </Droppable>
               </DragDropContext>
-            </Col>
-          </Row> */}
-          <Row>
-            <Col xs={12} md={2}></Col>
-            <Col xs={12} md={8}>
-              <Button
-                variant="primary"
-                size="lg"
-                block
+            </Grid>
+            <Grid item xs={12} spacing={3}>
+              <Button 
+                variant="contained" 
+                color="primary" 
+                size="large"
                 onClick={()=> this.generateMatrix()}
               >
-                Generate Matrix
+                GENERATE MATRIX
               </Button>
-            </Col>
-            <Col xs={12} md={2}></Col>
-          </Row>
-          <Row>
-            <ReactTable
-              data={this.state.matrix_note}
-              columns={columns_note}
-              minRows={12}
-              showPagination={false}
-            />
-            <Col xs="auto">
+            </Grid>
+            <Grid item xs={12} spacing={3}>
+              <ReactTable
+                data={this.state.matrix_note}
+                columns={columns_num}
+                minRows={12}
+                showPagination={false}
+                resizable={true}
+              />
+            </Grid>
+            <Grid item xs={12} spacing={3}>
               <ReactTable
                 data={this.state.matrix_num}
                 columns={columns_num}
@@ -558,8 +524,8 @@ class App extends React.Component {
                 showPagination={false}
                 resizable={true}
               />
-            </Col>
-          </Row>
+            </Grid>
+          </Grid>
         </Container>
 
       </React.Fragment>
