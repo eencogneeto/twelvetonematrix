@@ -9,6 +9,7 @@ import 'react-table/react-table.css';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import MuiButton from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { withStyles } from '@material-ui/core/styles';
 
 const Button = withStyles({
@@ -424,46 +425,47 @@ class App extends React.Component {
             spacing={2}
           >
             <Grid item xs={12} spacing={3}>
-              <Button
+              <ButtonGroup
                 variant="contained"
-                color={this.state.aSharp ? "primary" : "secondary"}
-                
-                onClick={()=> this.clickaSharp()}
+                color="primary"
+                size="large"
               >
-                {this.state.aSharp ? 'A#' : 'Bb'}
-              </Button>
-              <Button
-                variant="contained"
-                color={this.state.cSharp ? "primary" : "secondary"}
-                
-                onClick={()=> this.clickcSharp()}
-              >
-                {this.state.cSharp ? 'C#' : 'Db'}
-              </Button>
-              <Button
-                variant="contained"
-                color={this.state.dSharp ? "primary" : "secondary"}
-                
-                onClick={()=> this.clickdSharp()}
-              >
-                {this.state.dSharp ? 'D#' : 'Eb'}
-              </Button>
-              <Button
-                variant="contained"
-                color={this.state.fSharp ? "primary" : "secondary"}
-                
-                onClick={()=> this.clickfSharp()}
-              >
-                {this.state.fSharp ? 'F#' : 'Gb'}
-              </Button>
-              <Button
-                variant="contained"
-                color={this.state.gSharp ? "primary" : "secondary"}
-                
-                onClick={()=> this.clickgSharp()}
-              >
-                {this.state.gSharp ? 'G#' : 'Ab'}
-              </Button>
+                <Button
+                  variant="contained"
+                  color={this.state.aSharp ? "primary" : "secondary"}
+                  onClick={()=> this.clickaSharp()}
+                >
+                  {this.state.aSharp ? 'A#' : 'Bb'}
+                </Button>
+                <Button
+                  variant="contained"
+                  color={this.state.cSharp ? "primary" : "secondary"}
+                  onClick={()=> this.clickcSharp()}
+                >
+                  {this.state.cSharp ? 'C#' : 'Db'}
+                </Button>
+                <Button
+                  variant="contained"
+                  color={this.state.dSharp ? "primary" : "secondary"}
+                  onClick={()=> this.clickdSharp()}
+                >
+                  {this.state.dSharp ? 'D#' : 'Eb'}
+                </Button>
+                <Button
+                  variant="contained"
+                  color={this.state.fSharp ? "primary" : "secondary"}
+                  onClick={()=> this.clickfSharp()}
+                >
+                  {this.state.fSharp ? 'F#' : 'Gb'}
+                </Button>
+                <Button
+                  variant="contained"
+                  color={this.state.gSharp ? "primary" : "secondary"}
+                  onClick={()=> this.clickgSharp()}
+                >
+                  {this.state.gSharp ? 'G#' : 'Ab'}
+                </Button>
+              </ButtonGroup>
             </Grid>
             <Grid item xs={12} spacing={3}>
               <DragDropContext onDragEnd={this.onDragEnd}>
